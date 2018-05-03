@@ -108,6 +108,35 @@ namespace ConsoleApp2
             {
                 Welcome();
                 input = Console.ReadLine();
+                while (input.ToLower() == "add")
+                {
+                    Console.WriteLine("Student name: ");
+                    string newName = Console.ReadLine();
+                    nameList.Add(newName);
+
+                    Console.WriteLine("Student favorite color: ");
+                    string newColor = Console.ReadLine();
+                    colorList.Add(newColor);
+
+                    Console.WriteLine("Student's hometown: ");
+                    string newTown = Console.ReadLine();
+                    homeList.Add(newTown);
+
+                    Console.WriteLine("Student's favorite food: ");
+                    string newFood = Console.ReadLine();
+                    foodList.Add(newFood);
+
+                    Console.WriteLine("Would you like to add another student? (y/n)");
+                    string answer = Console.ReadLine().ToLower();
+                    if (answer == "y")
+                    {
+                        input = "add";
+                    }else
+                    {
+                        Welcome();
+                        input = Console.ReadLine();
+                    }
+                }
                 bool isNum = int.TryParse(input, out num); //bool to try parse input to an int
                 while (!isNum || num > nameList.Count || num < 0)//while loop to prevent entries that are not numbers or out of range
                 {
@@ -160,6 +189,7 @@ namespace ConsoleApp2
         static void Welcome()
         {
             Console.Write("Welcome to our C# class. Which student would you like to learn more about? (enter a number 1-20): ");
+            Console.Write("Type 'add' if you would like to add a student : ");
         }
 
     }
